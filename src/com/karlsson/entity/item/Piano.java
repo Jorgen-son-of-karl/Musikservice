@@ -30,4 +30,13 @@ public class Piano extends Instrument{
         String s = getBrand() + " " + getModel();
         return s;
     }
+
+    @Override
+    public String toString() {
+        return "Piano{" +
+                "brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", grand=" + grand +
+                '}';
+    }
 }

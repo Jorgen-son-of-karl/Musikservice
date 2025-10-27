@@ -23,4 +23,5 @@ public abstract class Item {
     public abstract void returnItem();
 
     public abstract String getDisplayName();
+    public abstract String toString();
 }

@@ -3,8 +3,8 @@ package com.karlsson.entity.member;
 import com.karlsson.entity.item.Item;
 
 public class Premium extends Member {
-    public Premium(String name) {
-        super(name);
+    public Premium(String name, String email) {
+        super(name, email);
     }
 
     @Override

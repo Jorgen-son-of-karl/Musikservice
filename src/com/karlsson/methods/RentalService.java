@@ -16,7 +16,7 @@ public class RentalService {
             return null;
         }
         else{
-            System.out.println("Hur många dagar vill du hyra objektet?");
+            System.out.println("Hur många dagar ska objektet hyras?");
             if (!scanner.hasNextInt()) {
                 System.out.println("Ogiltig inmatning, försök igen.");
                 scanner.next(); // töm felaktigt input
@@ -32,7 +32,7 @@ public class RentalService {
             Rental rental = new Rental(member, item, returnBy, price);
             member.getRentalHistory().add(rental);
             item.setStock(item.getStock() - 1);
-            System.out.println("Du har hyrt " + item.getDisplayName() + " i " + daysToRent + " dagar.");
+            System.out.println(member.getName() +" har hyrt " + item.getDisplayName() + " i " + daysToRent + " dagar.");
             System.out.println("Returdatum: " + returnBy);
             System.out.println("Pris: " + price + ":-");
 
@@ -42,7 +42,7 @@ public class RentalService {
 
     public void returnRental(Rental rental) {
         if (!rental.isActiveRental()) {
-            System.out.println("Denna hyrning är redan avslutad.");
+            System.out.println("Denna uthyrning är redan avslutad.");
             return;
         }
 
@@ -59,7 +59,7 @@ public class RentalService {
             System.out.println("Förseningsavgift: " + fee + ":- (" + delayDays + " dagar)");
         }
 
-        System.out.println("Tack! Du har återlämnat " + item.getDisplayName() + ".");
+        System.out.println(item.getDisplayName() + " är nu återlämnat.");
         System.out.println("Totalt pris: " + rental.getPrice() + ":-");
     }
 }

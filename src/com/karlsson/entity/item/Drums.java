@@ -41,4 +41,15 @@ public class Drums extends Instrument{
         String s = getBrand() + " " + getModel();
         return s;
     }
+
+    @Override
+    public String toString() {
+        return "Drums{" +
+                "brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", color='" + color + '\'' +
+                ", numberOfToms=" + numberOfToms +
+                ", numberOfKickDrums=" + numberOfKickDrums +
+                '}';
+    }
 }

@@ -35,4 +35,14 @@ public class Guitar extends Instrument {
         String s = getBrand() + " " + getModel();
         return s;
     }
+
+    @Override
+    public String toString() {
+        return "Guitar{" +
+                "brand='" + brand + '\'' +
+                ", model='" + model + '\'' +
+                ", electric=" + electric +
+                ", color='" + color + '\'' +
+                '}';
+    }
 }

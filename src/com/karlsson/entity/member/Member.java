@@ -12,14 +12,19 @@ import java.util.List;
 public abstract class Member implements PricePolicy {
     private final String id;
     private String name;
+    private String email;
     private List<Rental> rentalHistory;
 
-    public Member(String name) {
+    public Member(String name, String email) {
         this.id = Methods.generateIdNumber();
         this.name = name;
+        this.email = email;
         this.rentalHistory = new ArrayList<Rental>();
     }
 
+    public String getEmail() {return email;}
+
+    public void setEmail(String email) {this.email = email;}
 
     public String getId() {return id;} //bara getter, ID ska inte kunna ändras
 
@@ -39,6 +44,7 @@ public abstract class Member implements PricePolicy {
         return "Member{" +
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
+                ", email='" + email + '\'' +
                 ", rentalHistory=" + rentalHistory +
                 '}';
     }
