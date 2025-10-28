@@ -6,9 +6,7 @@ public class Piano extends Instrument{
     private boolean grand;
 
     public Piano(double pricePerDay, int stock, String brand, String model, boolean grand) {
-        super(pricePerDay, stock);
-        this.brand = brand;
-        this.model = model;
+        super(pricePerDay, stock,  brand, model);
         this.grand = grand;
     }
     public String getBrand() {return brand;}

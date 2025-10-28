@@ -5,26 +5,32 @@ import com.karlsson.entity.item.Item;
 import com.karlsson.entity.PricePolicy;
 import com.karlsson.entity.Rental;
 import com.karlsson.methods.Methods;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Member implements PricePolicy {
+
+public class Member implements PricePolicy {
     private final String id;
     private String name;
+    private MembershipLevel level;
     private String email;
     private List<Rental> rentalHistory;
 
-    public Member(String name, String email) {
+    public Member(String name, String email,  MembershipLevel level) {
         this.id = Methods.generateIdNumber();
         this.name = name;
         this.email = email;
+        this.level = level;
         this.rentalHistory = new ArrayList<Rental>();
     }
 
     public String getEmail() {return email;}
 
     public void setEmail(String email) {this.email = email;}
+
+    public MembershipLevel getLevel() { return level; }
+
+    public void setLevel(MembershipLevel level) { this.level = level; }
 
     public String getId() {return id;} //bara getter, ID ska inte kunna ändras
 
@@ -37,7 +43,18 @@ public abstract class Member implements PricePolicy {
     public void setRentalHistory(List<Rental> rentalHistory) {this.rentalHistory = rentalHistory;}
 
     @Override
-    public abstract double calculatePrice(Item item, int days);
+    public double calculatePrice(Item item, int days, Member member) {
+        double price = item.getPricePerDay() * days;
+        double discount = 0.0;
+
+        switch (member.getLevel()) {
+            case STUDENT -> discount = 0.2; //student 20% rabatt
+            case PREMIUM -> discount = 0.5; //premium 50%
+            case STANDARD -> discount = 0.0; //standard ingen rabatt
+        }
+
+        return price * (1 - discount);
+    }
 
     @Override
     public String toString() {
@@ -45,6 +62,7 @@ public abstract class Member implements PricePolicy {
                 "id='" + id + '\'' +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
+                ", level=" + level +
                 ", rentalHistory=" + rentalHistory +
                 '}';
     }

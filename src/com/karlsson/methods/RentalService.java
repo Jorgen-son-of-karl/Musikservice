@@ -10,25 +10,24 @@ import java.util.Scanner;
 
 public class RentalService {
 
-    public Rental createNewRental(Member member, Item item, Scanner scanner) {
+    public static void createNewRental(Member member, Item item, Scanner scanner) {
         if(item.getStock() <= 0){
             System.out.println("Objektet är inte tillgängligt.");
-            return null;
         }
         else{
             System.out.println("Hur många dagar ska objektet hyras?");
             if (!scanner.hasNextInt()) {
                 System.out.println("Ogiltig inmatning, försök igen.");
                 scanner.next(); // töm felaktigt input
-                return null;
+                return;
             }
             int daysToRent = scanner.nextInt();
             if (daysToRent <= 0) {
                 System.out.println("Antal dagar måste vara minst 1");
-                return null;
+                return;
             }
             LocalDate returnBy = LocalDate.now().plusDays(daysToRent);
-            double price = member.calculatePrice(item, daysToRent);
+            double price = member.calculatePrice(item, daysToRent, member);
             Rental rental = new Rental(member, item, returnBy, price);
             member.getRentalHistory().add(rental);
             item.setStock(item.getStock() - 1);
@@ -36,7 +35,6 @@ public class RentalService {
             System.out.println("Returdatum: " + returnBy);
             System.out.println("Pris: " + price + ":-");
 
-            return rental;
         }
     }
 
