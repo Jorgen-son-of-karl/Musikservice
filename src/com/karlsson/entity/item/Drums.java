@@ -8,9 +8,7 @@ public class Drums extends Instrument{
     private int numberOfKickDrums;
 
     public Drums(double pricePerDay, int stock, String brand, String model, String color, int numberOfToms, int numberOfKickDrums) {
-        super(pricePerDay, stock);
-        this.brand = brand;
-        this.model = model;
+        super(pricePerDay, stock, brand, model);
         this.color = color;
         this.numberOfToms = numberOfToms;
         this.numberOfKickDrums = numberOfKickDrums;

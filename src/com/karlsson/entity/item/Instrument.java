@@ -4,13 +4,10 @@ public abstract class Instrument extends Item {
 
 
 
-    public Instrument(double pricePerDay, int stock) {
-        super( pricePerDay, stock);
+    public Instrument(double pricePerDay, int stock, String brand, String model) {
+        super( pricePerDay, stock, brand, model);
 
     }
-
-
-
 
     @Override
     public void rentOut() {

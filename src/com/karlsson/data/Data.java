@@ -1,22 +1,34 @@
 package com.karlsson.data;
 
+
+import com.karlsson.entity.member.MembershipLevel;
+import com.karlsson.entity.Rental;
 import com.karlsson.entity.item.*;
 import com.karlsson.entity.member.*;
+import com.karlsson.methods.RentalService;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 public class Data {
+    static public List<Member> members;
+    static List<Item> items;
+    static Scanner sc = new Scanner(System.in);
+    RentalService rs = new RentalService();
+
     public static List<Member> initializeMemberData() {
-        List<Member> members = new ArrayList<>();
-        members.add(new Student("Jörgen Karlsson", "jorgen@email.com"));
-        members.add(new Premium("Ricky McRich", "iamrich@money.com"));
-        members.add(new Standard("Anders Andersson", "anders@vanlig.com"));
+        members = new ArrayList<>();
+        members.add(new Member("Jörgen Karlsson", "jorgen@email.com", MembershipLevel.STUDENT));
+        members.add(new Member("Ricky McRich", "iamrich@money.com", MembershipLevel.PREMIUM));
+        members.add(new Member("Anders Andersson", "anders@vanlig.com", MembershipLevel.STANDARD));
+
         return members;
     }
 
     public static List<Item> initializeItemData() {
-        List<Item> items = new ArrayList<>();
+        items = new ArrayList<>();
         items.add(new Guitar(400, 5, "Jackson", "kelly", true, "Black"));
         items.add(new Guitar(350, 5, "Fender", "Stratocaster", true, "Sunburst"));
         items.add(new Guitar(550, 3, "Takamine", "Dreadnought", false, "Natural"));
@@ -25,4 +37,12 @@ public class Data {
 
         return items;
     }
+
+    public static void initializeRentalData() {
+
+        Rental rental = new Rental(members.get(0), items.get(0), LocalDate.now().plusDays(7), items.get(0).getPricePerDay() * 7);
+        members.get(0).getRentalHistory().add(rental);
+        items.get(0).setStock(items.get(0).getStock() - 1);
+    }
+
 }

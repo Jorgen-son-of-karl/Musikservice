@@ -1,26 +1,15 @@
 package com.karlsson.entity.item;
 
-public class Guitar extends Instrument {
-    String brand;
-    private String model;
+public class Guitar extends Instrument { ;
     private boolean electric;
     private String color;
 
     public Guitar(double pricePerDay, int stock, String brand, String model, boolean electric, String color) {
-        super( pricePerDay, stock);
-        this.brand = brand;
-        this.model = model;
+        super( pricePerDay, stock, brand, model);
         this.electric = electric;
         this.color = color;
     }
 
-    public String getBrand() {return brand;}
-
-    public void setBrand(String brand) {this.brand = brand;}
-
-    public String getModel() {return model;}
-
-    public void setModel(String model) {this.model = model;}
 
     public boolean isElectric() {return electric;}
 
@@ -36,13 +25,13 @@ public class Guitar extends Instrument {
         return s;
     }
 
-    @Override
-    public String toString() {
-        return "Guitar{" +
-                "brand='" + brand + '\'' +
-                ", model='" + model + '\'' +
-                ", electric=" + electric +
-                ", color='" + color + '\'' +
-                '}';
-    }
+   // @Override
+//    public String toString() {
+//        return "Guitar{" +
+//                "brand='" + brand + '\'' +
+//                ", model='" + model + '\'' +
+//                ", electric=" + electric +
+//                ", color='" + color + '\'' +
+//                '}';
+//    }
 }
