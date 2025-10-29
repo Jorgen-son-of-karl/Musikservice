@@ -17,20 +17,31 @@ public class MemberService {
         String email = sc.nextLine();
 
         System.out.println("Välj medlemsnivå (1 = STANDARD, 2 = STUDENT, 3 = PREMIUM):");
-        int choice = sc.nextInt();
-        sc.nextLine(); // töm buffert
+        try {
+            int choice = Integer.parseInt(sc.nextLine());
+            MembershipLevel level = switch (choice) {
+                case 2 -> MembershipLevel.STUDENT;
+                case 3 -> MembershipLevel.PREMIUM;
+                default -> MembershipLevel.STANDARD;
+            };
+            Member member = new Member(name, email, level);
+            members.add(member);
+            System.out.println("Ny medlem skapad: " + member);
+            return member;
+        }
+            catch(Exception e){
+                System.out.println("Ogiltigt input av medlemsnivå!");
+                return null;
+            }
 
-        MembershipLevel level = switch (choice) {
-            case 2 -> MembershipLevel.STUDENT;
-            case 3 -> MembershipLevel.PREMIUM;
-            default -> MembershipLevel.STANDARD;
-        };
 
-        Member member = new Member(name, email, level);
-        members.add(member);
-        System.out.println("Ny medlem skapad: " + member);
 
-        return member;
+
+
+
+
+
+
     }
 
 }
