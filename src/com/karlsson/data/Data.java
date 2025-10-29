@@ -15,8 +15,6 @@ import java.util.Scanner;
 public class Data {
     static public List<Member> members;
     static List<Item> items;
-    static Scanner sc = new Scanner(System.in);
-    RentalService rs = new RentalService();
 
     public static List<Member> initializeMemberData() {
         members = new ArrayList<>();

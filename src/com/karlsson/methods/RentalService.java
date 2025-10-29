@@ -21,7 +21,7 @@ public class RentalService {
                 scanner.next(); // töm felaktigt input
                 return;
             }
-            int daysToRent = scanner.nextInt();
+            int daysToRent = Integer.parseInt(scanner.nextLine());
             if (daysToRent <= 0) {
                 System.out.println("Antal dagar måste vara minst 1");
                 return;
@@ -38,7 +38,7 @@ public class RentalService {
         }
     }
 
-    public void returnRental(Rental rental) {
+    public static void returnRental(Rental rental) {
         if (!rental.isActiveRental()) {
             System.out.println("Denna uthyrning är redan avslutad.");
             return;
