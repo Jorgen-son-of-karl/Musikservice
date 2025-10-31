@@ -29,8 +29,6 @@ public abstract class Item {
 
     public void setStock(int stock) {this.stock = stock;}
 
-    public abstract void rentOut();
-    public abstract void returnItem();
 
     public abstract String getDisplayName();
     //public abstract String toString();

@@ -56,6 +56,19 @@ public class Member implements PricePolicy {
         return price * (1 - discount);
     }
 
+    public String showActiveRentals(){
+        int activeRentals = 0;
+        for (Rental rental : rentalHistory) {
+            if(rental.isActiveRental()){
+                activeRentals++;
+            }
+        }
+        if(activeRentals > 0){
+            return activeRentals + " objekt uthyrda nu.";
+        }
+        else return "";
+    }
+
     @Override
     public String toString() {
         return "Member{" +
