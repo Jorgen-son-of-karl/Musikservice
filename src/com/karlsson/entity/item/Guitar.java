@@ -21,7 +21,11 @@ public class Guitar extends Instrument { ;
 
     @Override
     public String getDisplayName() {
-        String s = getBrand() + " " + getModel();
+        String s = "Gitarr, " + " " + getBrand() + " " + getModel();
+        if (electric) {
+            s += ", elgitarr,";
+        }
+        else s += ", akustisk,";
         return s;
     }
 

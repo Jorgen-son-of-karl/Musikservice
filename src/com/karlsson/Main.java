@@ -32,9 +32,10 @@ public class Main {
             System.out.println("2. Söka efter medlem");
             System.out.println("3. Radera Medlem");
             System.out.println("4. Ändra en medlem");
-            System.out.println("5. Visa Medlemslista");
-            System.out.println("6. Hyr ut ett objekt");
-            System.out.println("7. Hantera återlämning av objekt");
+            System.out.println("5. Visa medlemslista");
+            System.out.println("6. Visa lista med objekt");
+            System.out.println("7. Hyr ut ett objekt");
+            System.out.println("8. Hantera återlämning av objekt");
             switch(Integer.parseInt(scanner.nextLine())){
                 case 1:
                     MemberService.createNewMember(scanner);
@@ -46,15 +47,19 @@ public class Main {
                     MemberService.deleteMember(scanner);
                     break;
                 case 4:
-                    MemberService.changeMember(scanner);
+                    MemberService.alterMember(scanner);
                     break;
                 case 5:
                     for(Member member : members) {
                         System.out.println(member.toString());
                         break;
                     }
-
                 case 6:
+                    for(Item item : items) {
+                        System.out.println(item.getDisplayName() + ", " + item.getStock() + " i lager.");
+                    }
+                    break;
+                case 7:
                     System.out.println("Vilken medlem är det som ska hyra?");
                     System.out.println("Välj medlem (ange nummer):");
                     for (int i = 0; i < members.size(); i++) {
@@ -73,7 +78,7 @@ public class Main {
                     RentalService.createNewRental(chosenMember, chosenItem, scanner);
                     break;
 
-                case 7:
+                case 8:
                     System.out.println("Vilken medlem lämnar tillbaka ett objekt? (ange nummer):");
                     for (int i = 0; i < members.size(); i++) {
                         System.out.println((i + 1) + ". " + members.get(i).getName() + " (" + members.get(i).getLevel() + ")" + members.get(i).showActiveRentals());
@@ -87,7 +92,7 @@ public class Main {
 
                     System.out.println("Vilket objekt vill du lämna tillbaka?");
 
-                    // Skapa en ny lista med endast aktiva uthyrningar
+                    // Skapa en ny lista med aktiva uthyrningar
                     List<Rental> activeRentals = new ArrayList<>();
                     for (Rental rental : chosenMemberReturn.getRentalHistory()) {
                         if (rental.isActiveRental()) {
@@ -114,7 +119,6 @@ public class Main {
                     int rentalChoice = Integer.parseInt(scanner.nextLine());
                     Rental chosenRental = activeRentals.get(rentalChoice - 1);
                     RentalService.returnRental(chosenRental);
-
                     break;
             }
         }
