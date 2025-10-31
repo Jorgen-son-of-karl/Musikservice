@@ -9,13 +9,4 @@ public abstract class Instrument extends Item {
 
     }
 
-    @Override
-    public void rentOut() {
-
-    }
-
-    @Override
-    public void returnItem() {
-
-    }
 }

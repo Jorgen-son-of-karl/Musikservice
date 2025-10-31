@@ -20,6 +20,4 @@ public class Methods {
         }
         return str.toString();
     }
-
-
 }
