@@ -4,5 +4,5 @@ import com.karlsson.entity.item.Item;
 import com.karlsson.entity.member.Member;
 
 public interface PricePolicy {
-    double calculatePrice(Item item, int days, Member member);
+    double calculatePrice(Item item, int days, Member member); //TODO lägg om till item, f
 }

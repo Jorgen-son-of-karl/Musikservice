@@ -1,8 +1,6 @@
 package com.karlsson.entity.item;
 
 public class Drums extends Instrument{
-    private String brand;
-    private String model;
     private String color;
     private int numberOfToms;
     private int numberOfKickDrums;
@@ -14,13 +12,6 @@ public class Drums extends Instrument{
         this.numberOfKickDrums = numberOfKickDrums;
     }
 
-    public String getBrand() {return brand;}
-
-    public void setBrand(String brand) {this.brand = brand;}
-
-    public String getModel() {return model;}
-
-    public void setModel(String model) {this.model = model;}
 
     public String getColor() {return color;}
 
@@ -36,15 +27,13 @@ public class Drums extends Instrument{
 
     @Override
     public String getDisplayName() {
-        String s = getBrand() + " " + getModel();
+        String s = "Trummor, " + getBrand() + " " + getModel();
         return s;
     }
 
     @Override
     public String toString() {
         return "Drums{" +
-                "brand='" + brand + '\'' +
-                ", model='" + model + '\'' +
                 ", color='" + color + '\'' +
                 ", numberOfToms=" + numberOfToms +
                 ", numberOfKickDrums=" + numberOfKickDrums +

@@ -3,7 +3,6 @@ package com.karlsson.methods;
 import com.karlsson.entity.member.Member;
 import com.karlsson.entity.member.MembershipLevel;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -54,7 +53,7 @@ public class MemberService {
 
     }
 
-    public static void changeMember(Scanner sc) {
+    public static void alterMember(Scanner sc) {
         System.out.println("Välj vilken medlem som ska ändras");
         for(int i = 0; i < members.size(); i++){
             System.out.println((i + 1) + ". " + members.get(i).getId() +" , " + members.get(i).getName() + " , Email: " +members.get(i).getEmail() + " (" + members.get(i).getLevel() + ")");
@@ -111,6 +110,7 @@ public class MemberService {
             System.out.println("Hittade " + foundMembers.size() + " medlem/medlemmar.");
             for(Member member : foundMembers){
                 System.out.println(member.toString());
+                //TODO lägga till logik för att hantera medlem
             }
         }
     }
