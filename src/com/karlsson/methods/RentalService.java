@@ -43,7 +43,6 @@ public class RentalService {
             System.out.println("Denna uthyrning är redan avslutad.");
             return;
         }
-
         Item item = rental.getItem();
         item.setStock(item.getStock() + 1);
         rental.setActiveRental(false);

@@ -27,7 +27,7 @@ public class Drums extends Instrument{
 
     @Override
     public String getDisplayName() {
-        String s = "Trummor, " + getBrand() + " " + getModel();
+        String s = "Trummor, " + getBrand() + " " + getModel() + ", med " + getNumberOfToms() + " pukor och " + getNumberOfKickDrums() + " baskaggar";
         return s;
     }
 

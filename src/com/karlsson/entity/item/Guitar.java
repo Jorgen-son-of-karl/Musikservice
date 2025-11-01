@@ -23,9 +23,9 @@ public class Guitar extends Instrument { ;
     public String getDisplayName() {
         String s = "Gitarr, " + " " + getBrand() + " " + getModel();
         if (electric) {
-            s += ", elgitarr,";
+            s += ", elgitarr";
         }
-        else s += ", akustisk,";
+        else s += ", akustisk";
         return s;
     }
 
