@@ -36,6 +36,7 @@ public class Main {
             System.out.println("6. Visa lista med objekt");
             System.out.println("7. Hyr ut ett objekt");
             System.out.println("8. Hantera återlämning av objekt");
+
             switch(Integer.parseInt(scanner.nextLine())){
                 case 1:
                     MemberService.createNewMember(scanner);
@@ -52,12 +53,14 @@ public class Main {
                 case 5:
                     for(Member member : members) {
                         System.out.println(member.toString());
-                        break;
                     }
+                    System.out.println();
+                    break;
                 case 6:
                     for(Item item : items) {
                         System.out.println(item.getDisplayName() + ", " + item.getStock() + " i lager.");
                     }
+                    System.out.println();
                     break;
                 case 7:
                     System.out.println("Vilken medlem är det som ska hyra?");
@@ -120,6 +123,8 @@ public class Main {
                     Rental chosenRental = activeRentals.get(rentalChoice - 1);
                     RentalService.returnRental(chosenRental);
                     break;
+                    default:
+                        loop = false;
             }
         }
     }
