@@ -110,7 +110,6 @@ public class MemberService {
             System.out.println("Hittade " + foundMembers.size() + " medlem/medlemmar.");
             for(Member member : foundMembers){
                 System.out.println(member.toString());
-                //TODO lägga till logik för att hantera medlem?
             }
         }
     }

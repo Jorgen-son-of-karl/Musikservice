@@ -60,7 +60,6 @@ public class Member {
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
                 ", level=" + level +
-                ", rentalHistory=" + rentalHistory +
                 '}';
     }
 }

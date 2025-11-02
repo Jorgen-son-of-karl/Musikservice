@@ -21,12 +21,15 @@ public class RentalService {
         }
         else{
             System.out.println("Hur många dagar ska objektet hyras?");
-            if (!scanner.hasNextInt()) {
-                System.out.println("Ogiltig inmatning, försök igen.");
-                scanner.next(); // töm felaktigt input
-                return;
+           // if (!scanner.hasNextInt()) {
+            int daysToRent = 0;
+            try{
+                 daysToRent = Integer.parseInt(scanner.nextLine());
             }
-            int daysToRent = Integer.parseInt(scanner.nextLine());
+            catch(Exception e){
+                System.out.println("Ogiltig inmatning, försök igen.");
+            }
+
             if (daysToRent <= 0) {
                 System.out.println("Antal dagar måste vara minst 1");
                 return;
