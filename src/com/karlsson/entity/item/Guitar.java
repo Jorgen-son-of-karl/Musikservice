@@ -45,13 +45,4 @@ public class Guitar extends Item { ;
         return price * (1 - discount);
     }
 
-    // @Override
-//    public String toString() {
-//        return "Guitar{" +
-//                "brand='" + brand + '\'' +
-//                ", model='" + model + '\'' +
-//                ", electric=" + electric +
-//                ", color='" + color + '\'' +
-//                '}';
-//    }
 }

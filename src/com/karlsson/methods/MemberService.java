@@ -1,6 +1,6 @@
 package com.karlsson.methods;
 
-import com.karlsson.data.Data;
+import com.karlsson.data.MembershipRegistry;
 import com.karlsson.entity.member.Member;
 import com.karlsson.entity.member.MembershipLevel;
 
@@ -9,7 +9,7 @@ import java.util.Scanner;
 
 
 public class MemberService {
-    public void createNewMember(Scanner sc, Data d) {
+    public void createNewMember(Scanner sc, MembershipRegistry d) {
         System.out.println("Ange namn:");
         String name = sc.nextLine();
 
@@ -34,7 +34,7 @@ public class MemberService {
         }
     }
 
-    public static void deleteMember(Scanner sc, Data d) {
+    public void deleteMember(Scanner sc, MembershipRegistry d) {
         System.out.println("Välj medlem som ska raderas:");
         for(int i = 0; i < d.members.size(); i++){
             System.out.println((i + 1) + ". " + d.members.get(i).getId() +" , " + d.members.get(i).getName() + " , Email: " + d.members.get(i).getEmail() + " (" + d.members.get(i).getLevel() + ")");
@@ -53,7 +53,7 @@ public class MemberService {
 
     }
 
-    public static void alterMember(Scanner sc, Data d) {
+    public void alterMember(Scanner sc, MembershipRegistry d) {
         System.out.println("Välj vilken medlem som ska ändras");
         for(int i = 0; i < d.members.size(); i++){
             System.out.println((i + 1) + ". " + d.members.get(i).getId() +" , " + d.members.get(i).getName() + " , Email: " + d.members.get(i).getEmail() + " (" + d.members.get(i).getLevel() + ")");
@@ -94,7 +94,7 @@ public class MemberService {
         System.out.println();
     }
 
-    public static void findMember(Scanner sc, Data d) {
+    public void findMember(Scanner sc, MembershipRegistry d) {
 
         System.out.println("Ange medlemmens namn, email, eller ID");
         String input = sc.nextLine();
