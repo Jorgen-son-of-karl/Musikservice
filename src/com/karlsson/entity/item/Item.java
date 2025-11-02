@@ -27,5 +27,4 @@ public abstract class Item implements PricePolicy {
 
 
     public abstract String getDisplayName();
-    //public abstract String toString();
 }

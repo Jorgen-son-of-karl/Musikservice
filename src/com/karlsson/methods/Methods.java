@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Methods {
 
-    public static String generateIdNumber() {
+    public static String generateIdNumber() { //metod för att skapa ett random ID
         String charList = "ABCDEFGHIJKLMNOPQRSTUVWXYZ1234567890";
         StringBuilder str = new StringBuilder();
         Random rnd = new Random();
