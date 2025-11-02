@@ -6,11 +6,12 @@ import com.karlsson.entity.member.Member;
 
 import java.time.LocalDate;
 import java.time.temporal.ChronoUnit;
+import java.util.List;
 import java.util.Scanner;
 
 public class RentalService {
 
-    public static void createNewRental(Member member, Item item, Scanner scanner) {
+    public void createNewRental(Member member, Item item, Scanner scanner) {
         if(item.getStock() <= 0){
             System.out.println("Objektet är inte tillgängligt.");
         }
@@ -38,7 +39,7 @@ public class RentalService {
         }
     }
 
-    public static void returnRental(Rental rental) {
+    public void returnRental(Rental rental) {
         if (!rental.isActiveRental()) {
             System.out.println("Denna uthyrning är redan avslutad.");
             return;
@@ -58,5 +59,19 @@ public class RentalService {
 
         System.out.println(item.getDisplayName() + " är nu återlämnat.");
         System.out.println("Totalt pris: " + rental.getPrice() + ":-");
+    }
+
+    public void calculateTotalRevenue(List<Member> members) {
+        double totalRevenue = 0;
+
+        for (Member member : members) {
+            for (Rental rental : member.getRentalHistory()) {
+                if (!rental.isActiveRental()) { // Endast avslutade hyror
+                    totalRevenue += rental.getPrice();
+                }
+            }
+        }
+
+        System.out.println("Totala intäkter: " + totalRevenue + " kr");
     }
 }

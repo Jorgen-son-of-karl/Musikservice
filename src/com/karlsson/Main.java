@@ -26,6 +26,7 @@ public class Main {
         Data data = new Data();
         MemberService memberService = new MemberService();
         ItemService itemService = new ItemService();
+        RentalService rentalService = new RentalService();
 
         List<Member> members = data.initializeMemberData();
         List<Item> items = data.initializeItemData();
@@ -45,6 +46,7 @@ public class Main {
             System.out.println("7. Hyr ut ett objekt");
             System.out.println("8. Hantera återlämning av objekt");
             System.out.println("9. Filtrera/söka efter objekt");
+            System.out.println("10. Visa intäkter");
 
             switch(Integer.parseInt(scanner.nextLine())){
                 case 1:
@@ -97,7 +99,7 @@ public class Main {
                     }
                     int itemChoice = Integer.parseInt(scanner.nextLine());
                     Item chosenItem = items.get(itemChoice - 1);
-                    RentalService.createNewRental(chosenMember, chosenItem, scanner);
+                    rentalService.createNewRental(chosenMember, chosenItem, scanner);
                     break;
 
                 case 8:
@@ -140,11 +142,14 @@ public class Main {
 
                     int rentalChoice = Integer.parseInt(scanner.nextLine());
                     Rental chosenRental = activeRentals.get(rentalChoice - 1);
-                    RentalService.returnRental(chosenRental);
+                    rentalService.returnRental(chosenRental);
                     break;
                 case 9:
                     itemService.findItems(scanner, items);
                     break;
+
+                case 10:
+                    rentalService.calculateTotalRevenue(members);
                     default:
                         loop = false;
             }

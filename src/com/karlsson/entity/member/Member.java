@@ -1,7 +1,5 @@
 package com.karlsson.entity.member;
 
-
-import com.karlsson.entity.item.Item;
 import com.karlsson.entity.Rental;
 import com.karlsson.methods.Methods;
 import java.util.ArrayList;
@@ -20,7 +18,7 @@ public class Member {
         this.name = name;
         this.email = email;
         this.level = level;
-        this.rentalHistory = new ArrayList<Rental>();
+        this.rentalHistory = new ArrayList<>();
     }
 
     public String getEmail() {return email;}
