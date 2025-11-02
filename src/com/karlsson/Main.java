@@ -19,15 +19,15 @@ public class Main {
         Scanner scanner = new Scanner(System.in);
         boolean loop = true;
 
+        Inventory inventory = new Inventory();
         MembershipRegistry membershipRegistry = new MembershipRegistry();
         MemberService memberService = new MemberService();
         ItemService itemService = new ItemService();
         RentalService rentalService = new RentalService();
-        Inventory inventory = new Inventory();
-
-        List<Member> members = membershipRegistry.initializeMemberData();
         List<Item> items = inventory.initializeItemData();
+        List<Member> members = membershipRegistry.initializeMemberData();
         membershipRegistry.initializeRentalData(items);
+
 
         System.out.println("Välkommen till musikservice 1.0");
         System.out.println("Vad vill du göra?");
