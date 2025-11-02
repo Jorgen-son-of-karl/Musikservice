@@ -27,7 +27,7 @@ public class RentalService {
                 return;
             }
             LocalDate returnBy = LocalDate.now().plusDays(daysToRent);
-            double price = member.calculatePrice(item, daysToRent, member);
+            double price = item.calculatePrice(item, daysToRent, member);
             Rental rental = new Rental(member, item, returnBy, price);
             member.getRentalHistory().add(rental);
             item.setStock(item.getStock() - 1);
@@ -50,7 +50,7 @@ public class RentalService {
         LocalDate today = LocalDate.now();
         if (today.isAfter(rental.getReturnBy())) {
             long delayDays = ChronoUnit.DAYS.between(rental.getReturnBy(), today);
-            double fee = delayDays * item.getPricePerDay() * 0.2;
+            double fee = delayDays * rental.getPrice() * 0.2;
             double newTotal = rental.getPrice() + fee;
             rental.setPrice(newTotal);
             System.out.println("Förseningsavgift: " + fee + ":- (" + delayDays + " dagar)");

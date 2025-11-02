@@ -1,15 +1,15 @@
 package com.karlsson.entity.item;
 
-public abstract class Item {
+import com.karlsson.entity.PricePolicy;
+
+public abstract class Item implements PricePolicy {
    private String brand;
    private String model;
-   private double pricePerDay;
    private int stock;
 
-    public Item(double pricePerDay, int stock, String brand, String model) {
+    public Item( int stock, String brand, String model) {
         this.brand = brand;
         this.model = model;
-        this.pricePerDay = pricePerDay;
         this.stock = stock;
     }
 
@@ -20,10 +20,6 @@ public abstract class Item {
     public String getModel() {return model;}
 
     public void setModel(String model) {this.model = model;}
-
-    public double getPricePerDay() {return pricePerDay;}
-
-    public void setPricePerDay(double pricePerDay) {this.pricePerDay = pricePerDay;}
 
     public int getStock() {return stock;}
 

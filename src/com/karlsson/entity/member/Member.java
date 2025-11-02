@@ -2,14 +2,13 @@ package com.karlsson.entity.member;
 
 
 import com.karlsson.entity.item.Item;
-import com.karlsson.entity.PricePolicy;
 import com.karlsson.entity.Rental;
 import com.karlsson.methods.Methods;
 import java.util.ArrayList;
 import java.util.List;
 
 
-public class Member implements PricePolicy {
+public class Member {
     private final String id;
     private String name;
     private MembershipLevel level;
@@ -42,19 +41,6 @@ public class Member implements PricePolicy {
 
     public void setRentalHistory(List<Rental> rentalHistory) {this.rentalHistory = rentalHistory;}
 
-    @Override
-    public double calculatePrice(Item item, int days, Member member) {
-        double price = item.getPricePerDay() * days;
-        double discount = 0.0;
-
-        switch (member.getLevel()) {
-            case STUDENT -> discount = 0.2; //student 20% rabatt
-            case PREMIUM -> discount = 0.5; //premium 50%
-            case STANDARD -> discount = 0.0; //standard ingen rabatt
-        }
-
-        return price * (1 - discount);
-    }
 
     public String showActiveRentals(){
         int activeRentals = 0;

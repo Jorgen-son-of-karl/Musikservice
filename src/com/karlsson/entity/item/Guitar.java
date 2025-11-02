@@ -1,11 +1,13 @@
 package com.karlsson.entity.item;
 
-public class Guitar extends Instrument { ;
+import com.karlsson.entity.member.Member;
+
+public class Guitar extends Item { ;
     private boolean electric;
     private String color;
 
-    public Guitar(double pricePerDay, int stock, String brand, String model, boolean electric, String color) {
-        super( pricePerDay, stock, brand, model);
+    public Guitar(int stock, String brand, String model, boolean electric, String color) {
+        super(stock, brand, model);
         this.electric = electric;
         this.color = color;
     }
@@ -29,7 +31,21 @@ public class Guitar extends Instrument { ;
         return s;
     }
 
-   // @Override
+    @Override
+    public double calculatePrice(Item item, int days, Member member) {
+        double price = 500 * days;
+        double discount = 0.0;
+
+        switch (member.getLevel()) {
+            case STUDENT -> discount = 0.2; //student 20% rabatt
+            case PREMIUM -> discount = 0.5; //premium 50%
+            case STANDARD -> discount = 0.0; //standard ingen rabatt
+        }
+
+        return price * (1 - discount);
+    }
+
+    // @Override
 //    public String toString() {
 //        return "Guitar{" +
 //                "brand='" + brand + '\'' +

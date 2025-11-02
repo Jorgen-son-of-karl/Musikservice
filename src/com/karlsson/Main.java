@@ -2,8 +2,12 @@ package com.karlsson;
 
 import com.karlsson.data.Data;
 import com.karlsson.entity.Rental;
+import com.karlsson.entity.item.Drums;
+import com.karlsson.entity.item.Guitar;
 import com.karlsson.entity.item.Item;
+import com.karlsson.entity.item.Piano;
 import com.karlsson.entity.member.Member;
+import com.karlsson.methods.ItemService;
 import com.karlsson.methods.MemberService;
 import com.karlsson.methods.RentalService;
 
@@ -21,6 +25,7 @@ public class Main {
 
         Data data = new Data();
         MemberService memberService = new MemberService();
+        ItemService itemService = new ItemService();
 
         List<Member> members = data.initializeMemberData();
         List<Item> items = data.initializeItemData();
@@ -28,9 +33,9 @@ public class Main {
 
         System.out.println("Välkommen till musikservice 1.0");
         System.out.println("Vad vill du göra?");
-        System.out.println();
 
         while (loop) {
+            System.out.println();
             System.out.println("1. Lägga till medlem");
             System.out.println("2. Söka efter medlem");
             System.out.println("3. Radera medlem");
@@ -39,6 +44,7 @@ public class Main {
             System.out.println("6. Visa lista med objekt");
             System.out.println("7. Hyr ut ett objekt");
             System.out.println("8. Hantera återlämning av objekt");
+            System.out.println("9. Filtrera/söka efter objekt");
 
             switch(Integer.parseInt(scanner.nextLine())){
                 case 1:
@@ -77,7 +83,17 @@ public class Main {
                     System.out.println("Välj vilket objekt som ska hyras:");
                     for (int i = 0; i < items.size(); i++) {
                         Item item = items.get(i);
-                        System.out.println((i + 1) + ". " + item.getClass().getSimpleName() + " " + item.getBrand() + " " + item.getModel() + " (Pris: " + item.getPricePerDay() + " kr/dag, i lager: " + item.getStock() + ")");
+                        int itemPrice = 0;
+                        if(item instanceof Guitar) {
+                            itemPrice = 500;
+                        }
+                        else if(item instanceof Drums){
+                            itemPrice = 750;
+                        }
+                        else if(item instanceof Piano){
+                            itemPrice = 1000;
+                        }
+                        System.out.println((i + 1) + ". " + item.getClass().getSimpleName() + " " + item.getBrand() + " " + item.getModel() + " (Pris: " + itemPrice + " kr/dag, i lager: " + item.getStock() + ")");
                     }
                     int itemChoice = Integer.parseInt(scanner.nextLine());
                     Item chosenItem = items.get(itemChoice - 1);
@@ -125,6 +141,9 @@ public class Main {
                     int rentalChoice = Integer.parseInt(scanner.nextLine());
                     Rental chosenRental = activeRentals.get(rentalChoice - 1);
                     RentalService.returnRental(chosenRental);
+                    break;
+                case 9:
+                    itemService.findItems(scanner, items);
                     break;
                     default:
                         loop = false;

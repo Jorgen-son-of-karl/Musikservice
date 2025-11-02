@@ -5,7 +5,7 @@ import com.karlsson.entity.member.Member;
 import java.time.LocalDate;
 
 public class Rental {
-    private Member member;
+    private final Member member;
     private Item item;
     private LocalDate rentedOn;
     private LocalDate returnBy;

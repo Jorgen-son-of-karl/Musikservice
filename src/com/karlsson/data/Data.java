@@ -4,13 +4,13 @@ package com.karlsson.data;
 import com.karlsson.entity.member.MembershipLevel;
 import com.karlsson.entity.Rental;
 import com.karlsson.entity.item.*;
-import com.karlsson.entity.member.*;
-import com.karlsson.methods.RentalService;
+import com.karlsson.entity.member.Member;
+
 
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Scanner;
+
 
 public class Data {
      public List<Member> members;
@@ -27,18 +27,17 @@ public class Data {
 
     public List<Item> initializeItemData() {
         items = new ArrayList<>();
-        items.add(new Guitar(400, 5, "Jackson", "kelly", true, "Black"));
-        items.add(new Guitar(350, 5, "Fender", "Stratocaster", true, "Sunburst"));
-        items.add(new Guitar(550, 3, "Takamine", "Dreadnought", false, "Natural"));
-        items.add(new Drums(900, 2, "Yamaha", "Ryden", "Black glitter", 4, 2));
-        items.add(new Piano(1000, 4, "Yamaha", "NX-3 Avant", true));
+        items.add(new Guitar(5, "Jackson", "kelly", true, "Black"));
+        items.add(new Guitar( 5, "Fender", "Stratocaster", true, "Sunburst"));
+        items.add(new Guitar( 3, "Takamine", "Dreadnought", false, "Natural"));
+        items.add(new Drums( 2, "Yamaha", "Ryden", "Black glitter", 4, 2));
+        items.add(new Piano( 4, "Yamaha", "NX-3 Avant", true));
 
         return items;
     }
 
     public void initializeRentalData() {
-
-        Rental rental = new Rental(members.get(0), items.get(0), LocalDate.now().plusDays(7), items.get(0).getPricePerDay() * 7);
+        Rental rental = new Rental(members.get(0), items.get(0), LocalDate.now().plusDays(7), items.get(0).calculatePrice(items.get(0), 7, members.get(0)));
         members.get(0).getRentalHistory().add(rental);
         items.get(0).setStock(items.get(0).getStock() - 1);
     }
