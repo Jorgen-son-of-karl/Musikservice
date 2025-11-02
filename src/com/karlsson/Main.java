@@ -19,9 +19,12 @@ public class Main {
         int memberChoice;
         Member chosenMember;
 
-        List<Member> members = Data.initializeMemberData();
-        List<Item> items = Data.initializeItemData();
-        Data.initializeRentalData();
+        Data data = new Data();
+        MemberService memberService = new MemberService();
+
+        List<Member> members = data.initializeMemberData();
+        List<Item> items = data.initializeItemData();
+        data.initializeRentalData();
 
         System.out.println("Välkommen till musikservice 1.0");
         System.out.println("Vad vill du göra?");
@@ -30,7 +33,7 @@ public class Main {
         while (loop) {
             System.out.println("1. Lägga till medlem");
             System.out.println("2. Söka efter medlem");
-            System.out.println("3. Radera Medlem");
+            System.out.println("3. Radera medlem");
             System.out.println("4. Ändra en medlem");
             System.out.println("5. Visa medlemslista");
             System.out.println("6. Visa lista med objekt");
@@ -39,16 +42,16 @@ public class Main {
 
             switch(Integer.parseInt(scanner.nextLine())){
                 case 1:
-                    MemberService.createNewMember(scanner);
+                    memberService.createNewMember(scanner, data);
                     break;
                 case 2:
-                    MemberService.findMember(scanner);
+                    MemberService.findMember(scanner, data);
                     break;
                 case 3:
-                    MemberService.deleteMember(scanner);
+                    MemberService.deleteMember(scanner, data);
                     break;
                 case 4:
-                    MemberService.alterMember(scanner);
+                    MemberService.alterMember(scanner, data);
                     break;
                 case 5:
                     for(Member member : members) {

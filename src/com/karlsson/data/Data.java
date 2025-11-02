@@ -13,10 +13,10 @@ import java.util.List;
 import java.util.Scanner;
 
 public class Data {
-    static public List<Member> members;
-    static List<Item> items;
+     public List<Member> members;
+     List<Item> items;
 
-    public static List<Member> initializeMemberData() {
+    public List<Member> initializeMemberData() {
         members = new ArrayList<>();
         members.add(new Member("Jörgen Karlsson", "jorgen@email.com", MembershipLevel.STUDENT));
         members.add(new Member("Ricky McRich", "iamrich@money.com", MembershipLevel.PREMIUM));
@@ -25,7 +25,7 @@ public class Data {
         return members;
     }
 
-    public static List<Item> initializeItemData() {
+    public List<Item> initializeItemData() {
         items = new ArrayList<>();
         items.add(new Guitar(400, 5, "Jackson", "kelly", true, "Black"));
         items.add(new Guitar(350, 5, "Fender", "Stratocaster", true, "Sunburst"));
@@ -36,7 +36,7 @@ public class Data {
         return items;
     }
 
-    public static void initializeRentalData() {
+    public void initializeRentalData() {
 
         Rental rental = new Rental(members.get(0), items.get(0), LocalDate.now().plusDays(7), items.get(0).getPricePerDay() * 7);
         members.get(0).getRentalHistory().add(rental);

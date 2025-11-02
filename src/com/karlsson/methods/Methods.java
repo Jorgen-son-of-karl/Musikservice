@@ -1,12 +1,6 @@
 package com.karlsson.methods;
 
-import com.karlsson.entity.member.Member;
-import com.karlsson.entity.member.MembershipLevel;
-
 import java.util.Random;
-import java.util.Scanner;
-
-import static com.karlsson.data.Data.members;
 
 public class Methods {
 
