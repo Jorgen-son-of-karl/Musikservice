@@ -55,43 +55,46 @@ public class MemberService {
 
     public void alterMember(Scanner sc, MembershipRegistry d) {
         System.out.println("Välj vilken medlem som ska ändras");
-        for(int i = 0; i < d.members.size(); i++){
-            System.out.println((i + 1) + ". " + d.members.get(i).getId() +" , " + d.members.get(i).getName() + " , Email: " + d.members.get(i).getEmail() + " (" + d.members.get(i).getLevel() + ")");
+        for (int i = 0; i < d.members.size(); i++) {
+            System.out.println((i + 1) + ". " + d.members.get(i).getId() + " , " + d.members.get(i).getName() + " , Email: " + d.members.get(i).getEmail() + " (" + d.members.get(i).getLevel() + ")");
         }
-        int memberChoice = Integer.parseInt(sc.nextLine());
-        System.out.println("vad ska ändras?");
-        System.out.println("1. Namn: " + d.members.get(memberChoice-1).getName());
-        System.out.println("2. Email: " + d.members.get(memberChoice-1).getEmail());
-        System.out.println("3. Medlemsstatus: " + d.members.get(memberChoice-1).getLevel());
-        System.out.println("4. Avbryt");
-        int  attributeChoice = Integer.parseInt(sc.nextLine());
-        if(attributeChoice == 1){
-            System.out.println("Välj nytt namn:");
-            d.members.get(memberChoice-1).setName(sc.nextLine());
-        }
-        else if(attributeChoice == 2){
-            System.out.println("Välj nytt email:");
-            d.members.get(memberChoice-1).setEmail(sc.nextLine());
-        }
-        else if(attributeChoice == 3){
-            System.out.println("Välj nytt medlemskap");
-            System.out.println("1. Student");
-            System.out.println("2. Premium");
-            System.out.println("3. Standard");
-            int membershipChoice = Integer.parseInt(sc.nextLine());
-            switch (membershipChoice) {
-                case 1 -> d.members.get(memberChoice-1).setLevel(MembershipLevel.STUDENT);
-                case 2 -> d.members.get(memberChoice-1).setLevel(MembershipLevel.PREMIUM);
-                case 3 -> d.members.get(memberChoice-1).setLevel(MembershipLevel.STANDARD);
+        try {
+            int memberChoice = Integer.parseInt(sc.nextLine());
+            System.out.println("vad ska ändras?");
+            System.out.println("1. Namn: " + d.members.get(memberChoice - 1).getName());
+            System.out.println("2. Email: " + d.members.get(memberChoice - 1).getEmail());
+            System.out.println("3. Medlemsstatus: " + d.members.get(memberChoice - 1).getLevel());
+            System.out.println("4. Avbryt");
+            int attributeChoice = Integer.parseInt(sc.nextLine());
+            if (attributeChoice == 1) {
+                System.out.println("Välj nytt namn:");
+                d.members.get(memberChoice - 1).setName(sc.nextLine());
+            } else if (attributeChoice == 2) {
+                System.out.println("Välj nytt email:");
+                d.members.get(memberChoice - 1).setEmail(sc.nextLine());
+            } else if (attributeChoice == 3) {
+                System.out.println("Välj nytt medlemskap");
+                System.out.println("1. Student");
+                System.out.println("2. Premium");
+                System.out.println("3. Standard");
+                int membershipChoice = Integer.parseInt(sc.nextLine());
+                switch (membershipChoice) {
+                    case 1 -> d.members.get(memberChoice - 1).setLevel(MembershipLevel.STUDENT);
+                    case 2 -> d.members.get(memberChoice - 1).setLevel(MembershipLevel.PREMIUM);
+                    case 3 -> d.members.get(memberChoice - 1).setLevel(MembershipLevel.STANDARD);
+                }
+            } else {
+                System.out.println("Avbryter.");
+                System.out.println();
+                return;
             }
-        }
-        else {
-            System.out.println("Avbryter.");
+            System.out.println("Medlem ändrad.");
             System.out.println();
-            return;
         }
-        System.out.println("Medlem ändrad.");
-        System.out.println();
+        catch(Exception e){
+            System.out.println("Felaktig input, försök igen.");
+
+        }
     }
 
     public void findMember(Scanner sc, MembershipRegistry d) {
